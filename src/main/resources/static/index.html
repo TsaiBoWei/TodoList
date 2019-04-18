@@ -5,22 +5,45 @@
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
     
 </head>
 <body>
     <p>Get your greeting here</a></p>
     <div id="app">
-        {{ message }}
+    
+        <p>{{ message }}</p>
         
+        
+        <!-- v-if practice Conditionals-->
+        <!-- 對於vue中data儲存的屬性作同步 -->
         <span v-if="seen">Now you see me</span>
-        
+
+        <!-- v for practice For loops -->
+        <!-- vue 的for each 印出 todos 中的 text for( todo todo : todos ) -->
         <ol>
             <li v-for="todo in todos">
                 {{ todo.text }}
             </li>
+        </ol>    
+        
+        <!-- v-onclick practice Handling user input -->
+        <!-- 於vue 中註冊onClick事件 -->
+        <button v-on:click="reverseMessage">Reverse Message</button>
+                
+        <!-- v-model practice v-model -->
+        <!-- 會同步使用者輸入以及後端, 便於對接永續層 -->
+        <input v-model="message">
+        
+        <!-- v-components  -->
+        <ol>
+          <todo-item v-for="item in groceryList"
+                     v-bind:todo="item"
+                     v-bind:key="item.id">
+          </todo-item>
         </ol>
     </div>
+    
+    <script src="index.js"></script>
 </body>
 </html>
